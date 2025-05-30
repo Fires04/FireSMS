@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  gammu-smsd:
+    build: ./gammu-smsd
+    container_name: gammu-smsd
+    volumes:
+      - ./gammu-config/gammurc:/etc/gammurc
+      - ./smsd-config:/etc/smsd/
+      - ./sms-data:/var/spool/gammu/
+#    command: tail -f /dev/null
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    environment:
+      - LIBUSB_DEBUG=0
+    cap_add:
+      - SYS_ADMIN
+      - SYS_RAWIO
+    device_cgroup_rules:
+      - 'c 188:0 rmw'
+#    privileged: true
+    restart: always
+
+  sms-api:
+    build: ./api
+    container_name: sms-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - gammu-smsd
+    environment:
+      - API_TOKEN=my-secret-token
+    volumes:
+      - ./sms-data:/var/spool/gammu/
+    restart: always
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  sms-data:
