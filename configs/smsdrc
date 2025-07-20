@@ -4,14 +4,15 @@ connection = at115200
 
 [smsd]
 Service = files
-LogFile = /var/log/gammu-smsd.log
+LogFile = syslog
+LogFormat = text
 PhoneID = modem1
-CommTimeout = 30
+CommTimeout = 5
 SendTimeout = 30
 MaxRetries = 5
-ReceiveFrequency = 10
+ReceiveFrequency = 5
 InboxPath = /var/spool/gammu/inbox/
 OutboxPath = /var/spool/gammu/outbox/
 SentSMSPath = /var/spool/gammu/sent/
 ErrorSMSPath = /var/spool/gammu/error/
-DebugLevel=3
+DebugLevel=255

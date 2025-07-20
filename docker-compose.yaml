@@ -2,11 +2,11 @@ version: '3'
 
 services:
   gammu-smsd:
-    build: ./gammu-smsd
+    build: ./dockers/gammu-smsd
     container_name: gammu-smsd
     volumes:
-      - ./gammu-config/gammurc:/etc/gammurc
-      - ./smsd-config:/etc/smsd/
+      - ./configs/gammurc:/etc/gammurc
+      - ./configs/smsdrc:/etc/smsd/smsdrc
       - ./sms-data:/var/spool/gammu/
 #    command: tail -f /dev/null
     devices:
@@ -18,18 +18,18 @@ services:
       - SYS_RAWIO
     device_cgroup_rules:
       - 'c 188:0 rmw'
-#    privileged: true
+    privileged: true
     restart: always
 
   sms-api:
-    build: ./api
+    build: ./dockers/api
     container_name: sms-api
     ports:
       - "8080:8080"
     depends_on:
       - gammu-smsd
     environment:
-      - API_TOKEN=my-secret-token
+      - API_TOKEN=my-ultimate-secret-some-tokken114
     volumes:
       - ./sms-data:/var/spool/gammu/
     restart: always
