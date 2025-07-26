@@ -37,12 +37,14 @@ git clone https://github.com/Fires04/FireSMS.git
 cd FireSMS
 ```
 
-2. Configure Gammu
+### 2. Configure Gammu
+
 Edit the configuration files under configs/:
 gammurc – Set device path (e.g., /dev/ttyUSB0)
 docker-compose.yml - Set your 
 
-3. Start Services
+### 3. Start Services
+
 ```bash
 docker-compose up --build
 ```
@@ -50,7 +52,8 @@ This will start:
 gammu-smsd: the SMS daemon container
 api: the REST API for sending and managing messages
 
-📡 Usage
+#### 📡 Usage
+
 Sending an SMS
 
 POST to the API:
@@ -66,10 +69,12 @@ Content-Type: application/json
 }
 ```
 
-Receiving SMS
+#### Receiving SMS
+
 The received messages will appear in the shared volume used by the api service, usually mapped from Gammu's inbox. The API will also allow read the sms by GET request, but the functionality is not yet fully implemented and tested.
 
-🛠️ Configuration
+#### 🛠️ Configuration
+
 You may need to adjust:
 USB modem device path in gammurc
 Volume mounts in docker-compose.yaml
