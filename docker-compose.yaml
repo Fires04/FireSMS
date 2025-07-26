@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  gammu-smsd:
+  gammu:
     build: ./dockers/gammu-smsd
-    container_name: gammu-smsd
+    container_name: firesms-gammu
     volumes:
       - ./configs/gammurc:/etc/gammurc
       - ./configs/smsdrc:/etc/smsd/smsdrc
@@ -21,15 +21,15 @@ services:
     privileged: true
     restart: always
 
-  sms-api:
+  api:
     build: ./dockers/api
-    container_name: sms-api
+    container_name: firesms-api
     ports:
       - "8080:8080"
     depends_on:
-      - gammu-smsd
+      - gammu
     environment:
-      - API_TOKEN=my-ultimate-secret-some-tokken114
+      - API_TOKEN=some-secret-token
     volumes:
       - ./sms-data:/var/spool/gammu/
     restart: always
