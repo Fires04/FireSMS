@@ -14,6 +14,7 @@
 ---
 
 ## 🧱 Project Structure
+```
 FireSMS/
 ├── configs/
 │ ├── gammurc # Gammu configuration (device, connection)
@@ -23,6 +24,7 @@ FireSMS/
 │ └── gammu-smsd/ # Gammu SMSD container
 ├── docker-compose.yaml
 └── README.md
+```
 
 ---
 
