@@ -41,7 +41,8 @@ cd FireSMS
 
 Edit the configuration files under configs/:
 gammurc – Set device path (e.g., /dev/ttyUSB0)
-docker-compose.yml - Set your 
+
+docker-compose.yml - Set your API token in API section
 
 ### 3. Start Services
 
