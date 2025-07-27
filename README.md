@@ -77,7 +77,12 @@ The received messages will appear in the shared volume used by the api service, 
 #### 🛠️ Configuration
 
 You may need to adjust:
+
 USB modem device path in gammurc
+
 Volume mounts in docker-compose.yaml
+
 Port exposure for the API
+
 Permissions to access serial devices (/dev/ttyUSB*)
+
