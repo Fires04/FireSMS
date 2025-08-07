@@ -56,6 +56,8 @@ def receive_sms():
             content = f.read()
             messages.append({"filename": filename, "content": content})
             app.logger.info("Read SMS from file: %s", filename)
+        os.remove(filepath)
+        app.logger.info("Deleted SMS file: %s", filename
 
     return jsonify(messages), 200
 
