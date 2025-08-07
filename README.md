@@ -63,16 +63,35 @@ URL is http://yourserver:8080 (if you need to change the port, then you can edit
 ```http
 POST /send
 Content-Type: application/json
-
 {
-  "number": "+1234567890",
-  "message": "Hello from FireSMS!"
+  "token": "my-secret-token",
+  "number": "+420123456789",
+  "message": "Hello from Flask SMS gateway!"
 }
 ```
 
 #### Receiving SMS
 
-The received messages will appear in the shared volume used by the api service, usually mapped from Gammu's inbox. The API will also allow read the sms by GET request, but the functionality is not yet fully implemented and tested.
+The received messages will appear in the shared volume used by the api service, usually mapped from Gammu's inbox. The API will also allow read the sms by GET request.
+```http://yoururl.url/receive?token=my-secret-token```
+The response:
+```json
+[
+    {
+        "content": "SMS one",
+        "filename": "IN20250728_132555_00_+420123456789_00.txt"
+    },
+    {
+        "content": "SMS two",
+        "filename": "IN20250807_073751_00_+420123456789_00.txt"
+    },
+    {
+        "content": "SMS three",
+        "filename": "IN20250609_112118_00_+420123456789_00.txt"
+    }
+]
+```
+The messages are then automatically deleted.
 
 #### 🛠️ Configuration
 
