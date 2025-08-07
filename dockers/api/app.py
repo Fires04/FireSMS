@@ -65,7 +65,7 @@ def receive_sms():
             app.logger.info("Read SMS from file: %s", filename)
         # Move file to archive folder
         archive_path = os.path.join(SMS_ARCHIVE_PATH, filename)
-        os.rename(filepath, archive_path)
+        os.rename(os.path.join(SMS_INBOX_PATH, filename), archive_path)
         app.logger.info("Archived SMS file: %s", filename)
 
     return jsonify(messages), 200
