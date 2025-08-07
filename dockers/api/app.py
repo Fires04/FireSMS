@@ -10,6 +10,13 @@ logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(levelname)s in %
 
 SMS_OUTBOX_PATH = "/var/spool/gammu/outbox/"
 SMS_INBOX_PATH = "/var/spool/gammu/inbox/"
+SMS_ARCHIVE_PATH = "/var/spool/gammu/archive/"
+
+# Ensure folders exist
+for path in [SMS_OUTBOX_PATH, SMS_INBOX_PATH, SMS_ARCHIVE_PATH]:
+    os.makedirs(path, exist_ok=True)
+    app.logger.info("Ensured directory exists: %s", path)
+
 API_TOKEN = os.getenv("API_TOKEN")
 
 def validate_token(data):
@@ -56,8 +63,10 @@ def receive_sms():
             content = f.read()
             messages.append({"filename": filename, "content": content})
             app.logger.info("Read SMS from file: %s", filename)
-        os.remove(filepath)
-        app.logger.info("Deleted SMS file: %s", filename
+        # Move file to archive folder
+        archive_path = os.path.join(SMS_ARCHIVE_PATH, filename)
+        os.rename(os.path.join(SMS_INBOX_PATH, filename), archive_path)
+        app.logger.info("Archived SMS file: %s", filename)
 
     return jsonify(messages), 200
 
