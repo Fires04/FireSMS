@@ -91,7 +91,7 @@ The response:
     }
 ]
 ```
-The messages are then automatically deleted.
+The messages are then automatically moved to folder /sms-data/archive/
 
 #### 🛠️ Configuration
 
