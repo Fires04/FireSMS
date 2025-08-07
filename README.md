@@ -73,7 +73,7 @@ Content-Type: application/json
 #### Receiving SMS
 
 The received messages will appear in the shared volume used by the api service, usually mapped from Gammu's inbox. The API will also allow read the sms by GET request.
-```http://yoururl.url/receive?token=my-secret-token```
+```http://yoururl.url:8080/receive?token=my-secret-token```
 The response:
 ```json
 [
