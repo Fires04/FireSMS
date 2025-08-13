@@ -1,6 +1,6 @@
 # FiresSMS
 
-**FireSMS** is a Dockerized SMS Gateway built using [Gammu SMSD](https://wammu.eu/docs/manual/smsd/) and a custom API interface. It allows sending and receiving SMS messages using a GSM/USB modem connected to your server. FireSMS is ideal for IoT devices, alerting systems, or SMS-based applications.
+**FireSMS** is a Dockerized SMS Gateway built using [Gammu SMSD](https://wammu.eu/docs/manual/smsd/) and a custom API interface. It allows sending and receiving SMS messages using a GSM/USB modem connected to your server. FiresSMS is ideal for IoT devices, alerting systems, or SMS-based applications.
 
 ---
 
@@ -15,7 +15,7 @@
 
 ## 🧱 Project Structure
 ```
-FireSMS/
+FiresSMS/
 ├── configs/
 │ ├── gammurc # Gammu configuration (device, connection)
 │ └── smsdrc # SMS Daemon configuration
@@ -33,8 +33,8 @@ FireSMS/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Fires04/FireSMS.git
-cd FireSMS
+git clone https://github.com/Fires04/FiresSMS.git
+cd FiresSMS
 ```
 
 ### 2. Configure Gammu
