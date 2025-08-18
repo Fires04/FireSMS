@@ -1,18 +1,26 @@
 [gammu]
 port = /dev/ttyUSB0
 connection = at115200
+gammucoding = utf8
 
 [smsd]
+#unicode support
+InboxFormat = unicode
+OutboxFormat = unicode
+TransmitFormat = unicode
+#unicode support end
 Service = files
-LogFile = syslog
-LogFormat = text
 PhoneID = modem1
 CommTimeout = 5
 SendTimeout = 30
 MaxRetries = 5
 ReceiveFrequency = 5
+# Paths for SMS storage
 InboxPath = /var/spool/gammu/inbox/
 OutboxPath = /var/spool/gammu/outbox/
 SentSMSPath = /var/spool/gammu/sent/
 ErrorSMSPath = /var/spool/gammu/error/
+# Debugging options
+LogFile = syslog
+LogFormat = text
 DebugLevel=255

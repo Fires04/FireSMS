@@ -34,7 +34,6 @@
 # GammuLoc       : name of localisation file
 
 [gammu]
-
 port = /dev/ttyUSB0
 model = 
 connection = at115200
@@ -43,3 +42,4 @@ logfile = /tmp/gammu.log
 logformat = textall
 use_locking = 
 gammuloc = 
+gammucoding = utf8

@@ -47,7 +47,7 @@ docker-compose.yml - Set your API token in API section
 ### 3. Start Services
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 This will start:
 gammu-smsd: the SMS daemon container
