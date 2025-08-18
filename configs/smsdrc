@@ -1,8 +1,12 @@
+# Gammu SMS Daemon Configuration File
+# https://docs.gammu.org/config/index.html#gammurc
 [gammu]
 port = /dev/ttyUSB0
 connection = at115200
 gammucoding = utf8
 
+# Gammu SMS Daemon Configuration File
+# https://docs.gammu.org/smsd/config.html
 [smsd]
 #unicode support
 InboxFormat = unicode

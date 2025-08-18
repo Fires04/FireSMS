@@ -96,12 +96,16 @@ The messages are then automatically deleted.
 #### 🛠️ Configuration
 
 You may need to adjust:
+- USB modem device path in gammurc
+- Volume mounts in docker-compose.yaml
+- Port exposure for the API
+- Permissions to access serial devices (/dev/ttyUSB*)
+- unicode support in configs
 
-USB modem device path in gammurc
 
-Volume mounts in docker-compose.yaml
+### Unicode UTF-8 support
 
-Port exposure for the API
+App now support sending and receiving in UTF-8 / UTF-16 format. Keep in mind the UTF8/16 messages are shorter so you can be billed for more messages.
 
-Permissions to access serial devices (/dev/ttyUSB*)
-
+## Responsibility
+I am NOT responsible for any charges for mobile operators. Test your configuration fully and accordingly.
