@@ -43,7 +43,7 @@ def send_sms():
     time_str = now.strftime("%H%M%S")
 
     sms_file = os.path.join(SMS_OUTBOX_PATH, f"OUTA{date_str}_{time_str}_1_{number}_sms.txt")
-    with open(sms_file, "w") as f:
+    with open(sms_file, "w",encoding="utf-16") as f:
         f.write(f"{message}")
 
     app.logger.info("Queued SMS to %s: %s", number, message)
@@ -59,7 +59,7 @@ def receive_sms():
 
     messages = []
     for filename in os.listdir(SMS_INBOX_PATH):
-        with open(os.path.join(SMS_INBOX_PATH, filename), "r") as f:
+        with open(os.path.join(SMS_INBOX_PATH, filename), "r",encoding="utf-16") as f:
             content = f.read()
             messages.append({"filename": filename, "content": content})
             app.logger.info("Read SMS from file: %s", filename)
