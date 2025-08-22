@@ -3,7 +3,7 @@ version: '3'
 services:
   gammu:
     build: ./dockers/gammu-smsd
-    container_name: firesms-gammu
+    container_name: firessms-gammu
     volumes:
       - ./configs/gammurc:/etc/gammurc
       - ./configs/smsdrc:/etc/smsd/smsdrc
@@ -23,7 +23,7 @@ services:
 
   api:
     build: ./dockers/api
-    container_name: firesms-api
+    container_name: firessms-api
     ports:
       - "8080:8080"
     depends_on:
