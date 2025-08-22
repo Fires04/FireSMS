@@ -69,6 +69,18 @@ Content-Type: application/json
   "message": "Hello from Flask SMS gateway!"
 }
 ```
+or send message to multiple numbers
+
+```http
+POST /send
+Content-Type: application/json
+{
+  "token": "my-secret-token",
+  "number": ["+420123456789","+420987654321"],
+  "message": "Hello from Flask SMS gateway!"
+}
+```
+
 
 #### Receiving SMS
 

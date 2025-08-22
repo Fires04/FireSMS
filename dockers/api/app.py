@@ -42,13 +42,19 @@ def send_sms():
     date_str = now.strftime("%Y%m%d")
     time_str = now.strftime("%H%M%S")
 
-    sms_file = os.path.join(SMS_OUTBOX_PATH, f"OUTA{date_str}_{time_str}_1_{number}_sms.txt")
-    with open(sms_file, "w",encoding="utf-16") as f:
-        f.write(f"{message}")
-
-    app.logger.info("Queued SMS to %s: %s", number, message)
-
-    return jsonify({"status": "Message queued"}), 200
+    if isinstance(number, list):
+        for idx, num in enumerate(number, start=1):
+            sms_file = os.path.join(SMS_OUTBOX_PATH, f"OUTA{date_str}_{time_str}_{idx}_{num}_sms.txt")
+            with open(sms_file, "w", encoding="utf-16") as f:
+                f.write(f"{message}")
+            app.logger.info("Queued SMS to %s: %s", num, message)
+        return jsonify({"status": f"Message queued for {len(number)} numbers"}), 200
+    else:
+        sms_file = os.path.join(SMS_OUTBOX_PATH, f"OUTA{date_str}_{time_str}_1_{number}_sms.txt")
+        with open(sms_file, "w", encoding="utf-16") as f:
+            f.write(f"{message}")
+        app.logger.info("Queued SMS to %s: %s", number, message)
+        return jsonify({"status": "Message queued"}), 200
 
 @app.route("/receive", methods=["GET"])
 def receive_sms():
